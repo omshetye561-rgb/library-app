@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Import Books from Frappe API</h2>
+<form method="post">
+    <div class="mb-3">
+        <label>Title</label>
+        <input type="text" name="title" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Author</label>
+        <input type="text" name="author" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Publisher</label>
+        <input type="text" name="publisher" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>ISBN</label>
+        <input type="text" name="isbn" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Pages</label>
+        <input type="text" name="page" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>How many books to import?</label>
+        <input type="number" name="count" class="form-control" value="20" min="1">
+    </div>
+    <button type="submit" class="btn btn-success">Import</button>
+</form>
+{% endblock %}

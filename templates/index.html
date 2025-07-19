@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <h2>Welcome to the Library Management System</h2>
+    <p class="lead">Manage books, members, transactions, and more with ease.</p>
+    <hr>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="/books" class="btn btn-primary btn-lg">📚 View Books</a>
+        <a href="/members" class="btn btn-secondary btn-lg">👤 View Members</a>
+        <a href="/transactions" class="btn btn-success btn-lg">🔁 View Transactions</a>
+        <a href="/issue" class="btn btn-warning btn-lg">➕ Issue Book</a>
+        <a href="/import" class="btn btn-info btn-lg">🌐 Import Books</a>
+        <a href="/search" class="btn btn-dark btn-lg">🔍 Search</a>
+    </div>
+</div>
+{% endblock %}

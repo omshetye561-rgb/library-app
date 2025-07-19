@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Transactions</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book</th>
+            <th>Member</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Fee</th>
+            <th>Action</th>  <!-- ✅ Add this -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for txn in transactions %}
+        <tr>
+            <td>{{ txn.id }}</td>
+            <td>{{ txn.book.title }}</td>
+            <td>{{ txn.member.name }}</td>
+            <td>{{ txn.issue_date.strftime('%Y-%m-%d') if txn.issue_date else '' }}</td>
+            <td>{{ txn.return_date.strftime('%Y-%m-%d') if txn.return_date else '' }}</td>
+            <td>₹{{ txn.fee }}</td>
+            <td>
+                {% if not txn.return_date %}
+                <form action="{{ url_for('return_book', txn_id=txn.id) }}" method="post">
+                    <button class="btn btn-sm btn-warning">Return</button>
+                </form>
+                {% else %}
+                Returned
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

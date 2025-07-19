@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body class="container py-4">
+    <h1 class="mb-4">Library Management</h1>
+    <nav>
+        <a href="/" class="btn btn-sm btn-outline-primary">Home</a>
+        <a href="/books" class="btn btn-sm btn-outline-primary">Books</a>
+        <a href="/members" class="btn btn-sm btn-outline-primary">Members</a>
+        <a href="/transactions" class="btn btn-sm btn-outline-primary">Transactions</a>
+        <a href="/issue" class="btn btn-sm btn-outline-primary">Issue Book</a>
+        <a href="/search" class="btn btn-sm btn-outline-primary">Search</a>
+        <a href="/import" class="btn btn-sm btn-outline-primary">Import Books</a>
+
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-3">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

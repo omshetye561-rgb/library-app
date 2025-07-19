@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Search Books</h2>
+<form method="get">
+    <div class="input-group mb-3">
+        <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Enter title or author">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+
+{% if results %}
+<table class="table table-bordered">
+    <tr><th>ID</th><th>Title</th><th>Author</th><th>Stock</th></tr>
+    {% for book in results %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.stock }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% elif query %}
+<p>No results found for "{{ query }}"</p>
+{% endif %}
+{% endblock %}
